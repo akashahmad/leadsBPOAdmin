@@ -1,3 +1,4 @@
+import {apiPath} from '../config'
 import React,{useState,useEffect}  from 'react';
 import Style from './style'
 import {CSVLink } from "react-csv";
@@ -6,15 +7,23 @@ import {TablePagination} from 'react-pagination-table';
 import arraySort from 'array-sort';
 export default()=>
 {
-
-
     const [dataa, setdata]= useState([]);
     const [nameSortType, setNameSortType] = useState("");
+
     useEffect(()=>{
-        axios.get('https://json-team-crud.herokuapp.com/api/team').then(res=>{
+        axios.get(apiPath + "/api/team").then(res=>{
             setdata(res.data);
-        });
+            });
     },[]);
+
+    const getLength = () => {
+       return(dataa.length);
+
+    };
+
+
+
+
     const sortBy  = (x) => {
         x.toString();
         if(!nameSortType || nameSortType==="DESC"){
@@ -29,12 +38,12 @@ export default()=>
             // this.classList.toggle("fas fa-caret-down");
         }
     };
-    const [frontEndTeamBackup, setFrontEndTeamBackup] = useState([]);
+    const [dataBackup, setdataBackup] = useState([]);
     const searchHandler = (value) => {
-        if (frontEndTeamBackup.length === 0) {
-            setFrontEndTeamBackup([...dataa]);
+        if (dataBackup.length === 0) {
+            setdataBackup([...dataa]);
         }
-        setdata([...frontEndTeamBackup.filter(dataa => dataa.firstName.toLowerCase().indexOf(value.toLowerCase()) !== -1)])
+        setdata([...dataBackup.filter(dataa => dataa.firstName.toLowerCase().indexOf(value.toLowerCase()) !== -1)])
 
     };
     return (
@@ -77,16 +86,16 @@ export default()=>
                 </div>
             </div>
             <TablePagination
+
                 data={dataa}
                 columns="firstName.lastName.email.phone.postBody"
-                perPageItemCount={ 8 }
-                totalCount={500}
+                perPageItemCount={ 4 }
+                totalCount={dataa.length}
+                aarrayOption={ [["size", 'all', ' ']] }
                 // arrayOption={ [["size", '10', ' ']] }
             />
 
         </div>
-
-
         <Style/>
         </>
     );

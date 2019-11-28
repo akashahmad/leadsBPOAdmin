@@ -1,4 +1,3 @@
-
 import React from 'react';
 export default () => (
     <style js="true">{`
@@ -9,10 +8,7 @@ export default () => (
     padding-left: 22px;
     }
 .EXPORT-btn{
-height: 44px;
-    width: 146px;
-    margin-bottom: 10px;
-   }
+padding: 9px;   }
 .react-pagination-table .table {
 padding:0px!important;
 display: flex!important;

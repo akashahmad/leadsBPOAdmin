@@ -1,0 +1,40 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: red hat Display;    
+}
+
+.footer{
+    /*background-image: url('../images/gplay.png');*/
+    background-repeat: 100%;
+    margin-top: 276px;
+    height: 500px;
+    background-color: #202020;
+    /*margin-top: 4%;*/
+}
+.image{
+    background-image:url(../images/Group9.png);
+    min-height: 120vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.image-section8{
+    background-image: url(../images/Group1.png);
+    height:700px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.img-form{
+    background-image:url(../images/Group1.png);
+    height:437px;
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+.section5-image{
+    background-image: url(../images/Group1.png);
+    min-height: 116vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
