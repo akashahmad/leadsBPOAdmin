@@ -1,9 +1,16 @@
-import React from 'react';
-import Tab from '../components/Table3/table2';
+import React, {useEffect} from "react";
+import Routes from "./Routes";
+import {withRouter} from "react-router-dom";
 
-export  default()=>
-{
+export default () => {
+    useEffect(() => {
+        let loggedIn = localStorage.getItem("token");
+        if (!loggedIn) {
+            localStorage.setItem("route", this.props.location.pathname);
+            this.props.history.push('/login');
+        }
+    });
     return (
-        <Tab/>
-    );
+        <Routes/>
+    )
 }

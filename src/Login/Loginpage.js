@@ -1,12 +1,11 @@
 import React from 'react';
 import Login from '../components/Login/login.js';
 import Layout from '../components/layout/layout'
-export  default()=>
-{
+export  default() => {
     return (
         <>
         <Layout>
-        <Login/>
+            <Login/>
         </Layout>
         </>
 

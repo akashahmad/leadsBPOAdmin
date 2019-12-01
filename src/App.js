@@ -1,17 +1,32 @@
-import React from 'react';
-import Hajira from './hajira/hajira'
-import Login from './Login/Loginpage.js'
-import {BrowserRouter, Switch, Route} from "react-router-dom";
-function App() {
-  return (
-      <BrowserRouter>
-           <Switch>
-          <Route path={"/"} exact={true} component={Login}/>
-        <Route path={"/table"} component={Hajira}/>
-        </Switch>
-        </BrowserRouter>
+import React, {useEffect, useState} from "react";
+// import Routes from "./Routes";
+import {withRouter} from "react-router-dom";
 
-  )
+export default () => {
+    const [loader, setLoader] = useState(false);
+    useEffect(() => {
+        let loggedIn = localStorage.getItem("token");
+        if (!loggedIn) {
+            window.location.replace('/login');
+        } else {
+            setLoader(true)
+        }
+    }, []);
+
+    const logout =()=>{
+      localStorage.removeItem("token");
+      window.location.replace('/login');
+    };
+
+    return (
+        <div>
+            {loader ? <div>
+                <h1>Welcome</h1>
+                <button onClick={()=>logout()}>Log out</button>
+            </div> :
+                <h1>Loader ...</h1>}
+        </div>
+    )
 }
 
-export default App;
+// {/*<Routes/>*/}

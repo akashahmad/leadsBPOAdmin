@@ -1,4 +1,4 @@
-import {apiPath} from '../config'
+import {apiPath} from '../../config'
 import React,{useState,useEffect}  from 'react';
 import Style from './style'
 import {CSVLink } from "react-csv";
