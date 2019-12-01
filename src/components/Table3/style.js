@@ -1,6 +1,15 @@
 import React from 'react';
 export default () => (
     <style js="true">{`
+     .Loader {
+                padding-left: 3%;
+                width: 180px;
+                height: 80px;
+
+                border-radius: 50px;
+            }
+
+
     .search-bar{
     padding: 10px;
     width: 89%;

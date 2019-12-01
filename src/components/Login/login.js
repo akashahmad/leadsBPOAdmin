@@ -1,26 +1,42 @@
-import {apiPath} from '../config'
+import {userAuthapiPath} from '../config'
 import React,{useState,useEffect}  from 'react';
 import Style from './style'
 import axios from 'axios';
+
+
 export default()=>
 {
     const [mail, setMail]= useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const userAuthentication = e => {
+        e.preventDefault();
+        let payLoad = {email: mail, password: password};
+        axios.post(userAuthapiPath+ "/api/login", payLoad)
+            .then(response => {
+                window.location.replace("/table");
+            })
+            .catch(err => {
+                if(err.message === "Request failed with status code 404")
+                {
+                    setError("Invalid Password");
+                    setPassword("");
+                    setMail("");
+
+                }
+                else if(err.message === "Request failed with status code 500")
+                {
+                    setError("Invalid Email");
+                    setPassword("");
+                    setMail("");
+                }
+
+            });
+
+    };
 
 
-
-    // const SendData = (e) => {
-    //     e.preventDefault();
-    //
-    //     let payLoad = {email: mail, password: password};
-    //     axios.post(apiPath + "", payLoad)
-    //         .then(response => {
-    //             console.log(response);
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // };
 
     return(
         <>
@@ -28,9 +44,7 @@ export default()=>
         <div className="login">
             <div className="site-inner">
 
-                <form className="head"
-                   //  onSubmit={SendData}
-                    >
+                <form className="head" onSubmit={(event) => {userAuthentication(event)}} >
 
                             <div className="" >
                                 <div id="" className="inside-form">
@@ -68,6 +82,9 @@ export default()=>
 
                                         </div>
                                     </div>
+
+
+                                    <div style={{color:"red"}}>{error}</div>
 
                                     <div className="d-flex">
                                         <p className="sub-input" style={{color: "#035F80"}}>

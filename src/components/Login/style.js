@@ -5,6 +5,7 @@ export default () => (
 .login{
 background-color: #035F80;
 padding:60px;
+height: 800px;
 }
 
 .head{
@@ -35,6 +36,9 @@ margin-left: 389px;
        width: 295px;
     padding-bottom: 10px;
     padding: 10px;
+}
+.inside-form{
+margin-top: 50%;
 }
 
 

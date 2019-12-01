@@ -5,6 +5,8 @@ import {CSVLink } from "react-csv";
 import axios from 'axios';
 import {TablePagination} from 'react-pagination-table';
 import arraySort from 'array-sort';
+import Loader from "react-loader-spinner";
+
 export default()=>
 {
     const [dataa, setdata]= useState([]);
@@ -15,13 +17,6 @@ export default()=>
             setdata(res.data);
             });
     },[]);
-
-    const getLength = () => {
-       return(dataa.length);
-
-    };
-
-
 
 
     const sortBy  = (x) => {
@@ -48,7 +43,21 @@ export default()=>
     };
     return (
         <>
+
+        {/*<div >*/}
+            {/*<div className="d-flex Loader">*/}
+                {/*<Loader*/}
+                    {/*type="ThreeDots"*/}
+                    {/*color="#006a90"*/}
+                    {/*height={100}*/}
+                    {/*width={100}*/}
+                    {/*timeout={3000} //3 secs*/}
+                {/*/>*/}
+            {/*</div>*/}
+        {/*</div>*/}
+
         <div className="d-flex">
+
             <input className="search-bar" placeholder="SEARCH BY NAME"
                    type="text" onChange={event => {searchHandler(event.target.value)}}/>
             <CSVLink data={dataa}><button className="EXPORT-btn" onClick={() => {CSVLink(dataa)}}> EXPORT DATA</button></CSVLink>
@@ -85,16 +94,17 @@ export default()=>
 
                 </div>
             </div>
-            <TablePagination
 
-                data={dataa}
-                columns="firstName.lastName.email.phone.postBody"
-                perPageItemCount={ 4 }
-                totalCount={dataa.length}
-                aarrayOption={ [["size", 'all', ' ']] }
-                // arrayOption={ [["size", '10', ' ']] }
-            />
+            { dataa &&  dataa.length!==0 &&
+              <TablePagination
+                    data={dataa}
+                    columns="firstName.lastName.email.phone.postBody"
+                    perPageItemCount={ 10 }
+                    totalCount={dataa && dataa.length ? parseInt(dataa.length / 1) : 1
 
+                    }
+                />
+            }
         </div>
         <Style/>
         </>
