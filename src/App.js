@@ -11,7 +11,6 @@ export default () => {
         let loggedIn = localStorage.getItem("token");
         if (!loggedIn) {
             window.location.replace('/login');
-
         }
         else {
             setLoader(true)

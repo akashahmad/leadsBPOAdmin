@@ -13,10 +13,18 @@ export default()=>
     const [nameSortType, setNameSortType] = useState("");
     const [loading, setLoading] = useState(true)
     useEffect(()=>{
-        axios.get(apiPath + "/api/team").then(res=>{
-            setdata(res.data);
-            setLoading(false);
-        });
+        let token = localStorage.getItem("token");
+        if(token){
+            let header = {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            };
+            axios.get(apiPath + "/api/team", header).then(res=>{
+                setdata(res.data);
+                setLoading(false);
+            });
+        }
     },[]);
     const sortBy  = (x) => {
         x.toString();

@@ -1,4 +1,4 @@
-import {userAuthapiPath} from '../../config'
+import {apiPath} from '../../config'
 import React, {useState, useEffect}  from 'react';
 import Style from './style'
 import axios from 'axios';
@@ -10,7 +10,7 @@ export default() => {
     const userAuthentication = e => {
         e.preventDefault();
         let payLoad = {email: mail, password: password};
-        axios.post(userAuthapiPath + "/api/login", payLoad)
+        axios.post(apiPath + "/api/login", payLoad)
             .then(response => {
                 localStorage.setItem("token", response.data.token);
                 setPassword("");
