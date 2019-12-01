@@ -1,21 +1,32 @@
 import {userAuthapiPath} from '../config'
-import React,{useState,useEffect}  from 'react';
+import React,{useState}  from 'react';
 import Style from './style'
 import axios from 'axios';
 
 
-export default()=>
+export default(props)=>
 {
     const [mail, setMail]= useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    let {dispatch} = props;
+
+    const setGlobalState = (value) => {
+        dispatch({
+            type: "Token",
+            payLoad: value
+        })
+    }
+
 
     const userAuthentication = e => {
         e.preventDefault();
         let payLoad = {email: mail, password: password};
         axios.post(userAuthapiPath+ "/api/login", payLoad)
             .then(response => {
-                window.location.replace("/table");
+                //window.location.replace("/table");
+                console.log(response.data.token)
+                //setGlobalState(response.data.token);
             })
             .catch(err => {
                 if(err.message === "Request failed with status code 404")

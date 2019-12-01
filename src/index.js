@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './App';
-import { Provier } from './store';
+import { Provider } from './store';
 ReactDOM.render(<div>
-    <Provier><Main /></Provier>
+    <Provider><Main /></Provider>
 </div> , document.getElementById('root'));

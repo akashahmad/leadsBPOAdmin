@@ -1,21 +1,23 @@
 import React, {Component} from 'react';
 const Context = React.createContext();
-
 const reducer = (state, action) => {
     switch (action.type){
-        case 'SET_WORD':
-            return {...state, word:  action.payLoad};
+        case 'Token':
+            console.log(localStorage.setItem("Token", action.payLoad));
+            return {...state, Token:  action.payLoad};
         default:
             return state;
     }
+
 };
 
-export class Provier extends Component {
+export class Provider extends Component {
     state = {
         dispatch: action => {
             this.setState(state => reducer(state, action));
         },
-        word:[],
+        Token: localStorage.getItem("Token")?localStorage.getItem("Token"):""
+
     };
     render() {
         const { state, props: { children } } = this;
