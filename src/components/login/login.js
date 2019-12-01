@@ -2,8 +2,6 @@ import {userAuthapiPath} from '../../config'
 import React, {useState, useEffect}  from 'react';
 import Style from './style'
 import axios from 'axios';
-
-
 export default() => {
     const [loader, setLoader] = useState(false);
     const [mail, setMail] = useState("");
@@ -23,7 +21,8 @@ export default() => {
                 if (err.message === "Request failed with status code 404") {
                     setError("Invalid Password");
                 }
-                else if (err.message === "Request failed with status code 500") {
+                else if (err.message === "Request failed with status code 500")
+                {
                     setError("Email does not exist");
                 }
             });

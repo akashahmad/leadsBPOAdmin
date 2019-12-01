@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import Routes from "./Routes";
+import Routes from "../../components/Routes";
 import {withRouter} from "react-router-dom";
 
 export default () => {
