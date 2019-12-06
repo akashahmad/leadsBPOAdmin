@@ -91,7 +91,7 @@ export default() => {
                             </div>
                             <div className="mt-4 head">
                                 <div>
-                                    <button className="btn_submit" type="submit">Submit
+                                    <button className="btn_submit" type="submit">Log In
                                     </button>
                                 </div>
                             </div>
